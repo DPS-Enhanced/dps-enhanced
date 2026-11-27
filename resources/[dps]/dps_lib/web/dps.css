@@ -1,0 +1,63 @@
+/* The DPS look for NUI pages. Load it from any resource:
+     <link rel="stylesheet" href="https://cfx-nui-dps_lib/web/dps.css">
+   To restyle the whole suite: change the variables here AND the matching values in shared/theme.lua.
+   Rules: navy panels, orange outline and accents, cream text. The main action is solid orange,
+   a second action is an orange outline. */
+
+:root {
+  --dps-navy: rgba(14, 26, 43, 0.94);
+  --dps-navy2: rgba(21, 37, 57, 0.94);
+  --dps-navy3: #1b2e45;
+  --dps-line: #2b4057;
+  --dps-cream: #f2ead9;
+  --dps-dim: #a8b8c9;
+  --dps-accent: #ff7a45;
+  --dps-accent2: #ffb088;
+  --dps-success: #4ec9b0;
+  --dps-warning: #ffb088;
+  --dps-error: #ff5a5a;
+  --dps-text: Roboto, Arial, sans-serif;
+  --dps-radius: 12px;
+}
+
+.dps-panel {
+  background: var(--dps-navy);
+  border: 2px solid var(--dps-accent);
+  border-radius: var(--dps-radius);
+  color: var(--dps-cream);
+  font-family: var(--dps-text);
+}
+
+.dps-row {
+  background: var(--dps-navy2);
+  border: 1px solid var(--dps-line);
+  border-radius: 8px;
+  color: var(--dps-cream);
+}
+.dps-row:hover, .dps-row:focus-visible { border-color: var(--dps-accent); }
+
+.dps-label { color: var(--dps-dim); }
+
+.dps-input {
+  background: var(--dps-navy3);
+  border: 1px solid var(--dps-line);
+  border-radius: 8px;
+  color: var(--dps-cream);
+  font-family: var(--dps-text);
+}
+.dps-input:focus { border-color: var(--dps-accent); outline: none; }
+
+/* second action: orange outline */
+.dps-button {
+  background: transparent;
+  border: 2px solid var(--dps-accent);
+  border-radius: 8px;
+  color: var(--dps-accent);
+  font-family: var(--dps-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+/* the one main action: solid orange */
+.dps-button--main { background: var(--dps-accent); color: #1b1206; }
+.dps-button:disabled { border-color: var(--dps-line); color: var(--dps-dim); background: transparent; cursor: default; }
+.dps-button:focus-visible, .dps-row:focus-visible { outline: 2px solid var(--dps-accent2); outline-offset: 2px; }

@@ -1,0 +1,12 @@
+# Never commit secrets or one server's private settings.
+server.cfg
+*.pass
+*.pem
+.env
+CLAUDE.local.md
+
+# Editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
