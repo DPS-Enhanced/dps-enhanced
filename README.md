@@ -15,7 +15,11 @@ has started without errors on our Enhanced test server.
 
 | Resource | What it does | Status |
 |---|---|---|
-| [`dps_lib`](resources/%5Bdps%5D/dps_lib) | The DPS look (colours and a shared style sheet) and a few helpers Qbox does not have | Starts clean on Enhanced. Not yet used by another resource. |
+| [`dps_lib`](resources/%5Bdps%5D/dps_lib) | The DPS look (colours and a shared style sheet) and a few helpers Qbox does not have | Starts clean on Enhanced. Used by `dps_welcome`. |
+| [`dps_welcome`](resources/%5Bdps%5D/dps_welcome) | The loading screen (video, pictures or the DPS backdrop) and the spawn screen, with a camera over each spawn point, job spawns and a first-time welcome. A port of qbx_spawn and bd_loadingscreen. | Tested in game on Enhanced. |
+| [`dps_voice`](resources/%5Bdps%5D/dps_voice) | Voice on Enhanced's new voice system: talking distance, radio and phone calls. Answers to the pma-voice calls other scripts use. | Starts clean. Channels checked with `/voicetest`. Sound between two players not tested yet. |
+| [`dps_medical`](resources/%5Bdps%5D/dps_medical) | Health, injuries, bleeding, last stand and death. A port of qbx_medical. Illness and patient records are being added. | Starts clean. Not tested in game yet. |
+| [`overlays/ox_inventory`](overlays/ox_inventory) | The DPS item list for ox_inventory, with rules for which items load. | Loads 1,300 items on Enhanced. Not opened in game yet. |
 
 A one-paste install (a txAdmin recipe) is planned. It is not ready yet, so for now you install by
 hand with the steps below.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- YouTube refuses an embed that does not say which page it is on. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>dps_welcome loading</title>
+    <link rel="stylesheet" href="loading.css">
+</head>
+<body>
+    <!-- Background, back to front: the DPS backdrop, then pictures or video, then a dark layer. -->
+    <div id="backdrop"><div class="streaks" aria-hidden="true"></div></div>
+    <div id="slides"></div>
+    <video id="video" muted loop playsinline hidden></video>
+    <div id="youtube" hidden></div>
+    <div id="dim"></div>
+
+    <nav id="links"></nav>
+
+    <section id="panels">
+        <article id="news" class="panel" hidden>
+            <header><h3></h3><time></time></header>
+            <div class="lines"></div>
+        </article>
+        <article id="info" class="panel" hidden>
+            <header><h3></h3></header>
+            <div class="lines"></div>
+        </article>
+    </section>
+
+    <aside id="staff" class="panel" hidden>
+        <header><h3>Staff team</h3></header>
+        <ul></ul>
+    </aside>
+
+    <main>
+        <img id="logo" src="dps-logo.svg" alt="">
+        <p id="hello">Welcome<span id="player"></span>.</p>
+        <p id="greeting"></p>
+    </main>
+
+    <footer>
+        <div id="step">Joining server</div>
+        <div id="bar"><div id="fill"></div></div>
+        <div id="music" hidden>
+            <span id="song"></span>
+            <span class="keys"><kbd>Space</kbd> mute <kbd>&larr;</kbd><kbd>&rarr;</kbd> song <kbd>&uarr;</kbd><kbd>&darr;</kbd> volume</span>
+        </div>
+    </footer>
+
+    <audio id="audio" loop></audio>
+
+    <script src="config.js"></script>
+    <script src="loading.js"></script>
+</body>
+</html>
