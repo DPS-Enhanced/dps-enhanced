@@ -51,9 +51,9 @@ return {
         },
         {
             label = 'Pillbox Hill Medical Center',
-            detail = 'Ambulance',
+            detail = 'Medical',
             coords = vec4(295.83, -584.56, 43.26, 70.0),
-            jobs = 'ambulance',
+            jobs = { 'sams', 'lsmc', 'lsfd', 'ambulance' },
         },
 
         -- TODO(human): the real DPS spawn points go here. See "Add a spawn point" in the README.
