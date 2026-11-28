@@ -2,27 +2,27 @@
 
 # DPS Enhanced
 
-A free, open-source server pack for **FiveM for GTAV Enhanced**.
+Free, open-source resources for [Qbox](https://github.com/Qbox-project) servers on
+**FiveM for GTAV Enhanced**.
 
-Everything DPS makes lives in this one repository, so you do not have to collect scripts from many
-places. It runs on [Qbox](https://github.com/Qbox-project) and
-[Overextended](https://github.com/overextended). Nothing here is paid or locked.
+This repository is the front door. It holds the install guide and the notes that apply to every
+resource. **The resources themselves each live in their own repository.**
 
-## Status
-
-**Early.** The pack is being built one resource at a time. A resource is listed below only after it
-has started without errors on our Enhanced test server.
+## The resources
 
 | Resource | What it does | Status |
 |---|---|---|
-| [`dps_lib`](resources/%5Bdps%5D/dps_lib) | The DPS look (colours and a shared style sheet) and a few helpers Qbox does not have | Starts clean on Enhanced. Used by `dps_welcome`. |
-| [`dps_welcome`](resources/%5Bdps%5D/dps_welcome) | The loading screen (video, pictures or the DPS backdrop) and the spawn screen, with a camera over each spawn point, job spawns and a first-time welcome. A port of qbx_spawn and bd_loadingscreen. | Tested in game on Enhanced. |
-| [`dps_voice`](resources/%5Bdps%5D/dps_voice) | Voice on Enhanced's new voice system: talking distance, radio and phone calls. Answers to the pma-voice calls other scripts use. | Starts clean. Channels checked with `/voicetest`. Sound between two players not tested yet. |
-| [`dps_medical`](resources/%5Bdps%5D/dps_medical) | Health, injuries, bleeding, last stand and death. A port of qbx_medical. Illness and patient records are being added. | Starts clean. Not tested in game yet. |
-| [`overlays/ox_inventory`](overlays/ox_inventory) | The DPS item list for ox_inventory, with rules for which items load. | Loads 1,300 items on Enhanced. Not opened in game yet. |
+| [**dps_welcome**](https://github.com/DPS-Enhanced/dps_welcome) | Loading screen with video or pictures, and a spawn screen with a camera over each spawn point | Tested in game |
+| [**dps_police**](https://github.com/DPS-Enhanced/dps_police) | Police for every law enforcement job: duty, cuffs, evidence, fines, impound, jail | Starts clean |
+| [**dps_medical**](https://github.com/DPS-Enhanced/dps_medical) | Health, injuries, bleeding, last stand and death | Starts clean |
+| [**dps_voice**](https://github.com/DPS-Enhanced/dps_voice) | Voice chat on the new Enhanced voice system: talking distance, radio, phone calls | Starts clean |
+| [**dps_jobs**](https://github.com/DPS-Enhanced/dps_jobs) | The DPS job list: police, medical, fire and justice, with ranks and pay | Starts clean |
+| [**dps_lib**](https://github.com/DPS-Enhanced/dps_lib) | The DPS look and a few helpers the other resources share | Starts clean |
 
-A one-paste install (a txAdmin recipe) is planned. It is not ready yet, so for now you install by
-hand with the steps below.
+*Tested in game* means it has been played on an Enhanced server. *Starts clean* means it loads on an
+Enhanced server with no errors, and has not been played yet.
+
+Also here: [`overlays/ox_inventory`](overlays/ox_inventory), the DPS item list for ox_inventory.
 
 ## What you need
 
@@ -30,29 +30,24 @@ hand with the steps below.
 |---|---|
 | A FiveM for GTAV Enhanced server | Download it from the [Cfx server download page](https://docs.fivem.net/docs/server-download/) with **Platform** set to *FiveM for GTAV Enhanced*. Windows or Linux. |
 | [qbx_core](https://github.com/Qbox-project/qbx_core) | The framework. Install it the way the [Qbox docs](https://docs.qbox.re/) describe. |
-| [ox_lib](https://github.com/overextended/ox_lib) and [oxmysql](https://github.com/overextended/oxmysql) | Qbox needs these too. |
+| [ox_lib](https://github.com/overextended/ox_lib), [oxmysql](https://github.com/overextended/oxmysql), [ox_target](https://github.com/overextended/ox_target), [ox_inventory](https://github.com/overextended/ox_inventory) | The Overextended libraries. |
 | MariaDB or MySQL | Any recent version. |
 
-## Install
+Each resource lists anything extra it needs in its own README.
 
-1. Download this repository: the green **Code** button, then **Download ZIP**. Unzip it.
-2. Copy the folder `resources/[dps]` into your server's `resources` folder.
-3. Open your `server.cfg`. After the lines that start Qbox and ox, add:
+## Install a resource
 
-   ```
-   ensure [dps]
-   ```
+1. Open the resource's repository from the table above.
+2. Click the green **Code** button, then **Download ZIP**. Unzip it.
+3. Rename the folder to the resource's name, for example `dps_police`. GitHub adds `-main` to the
+   folder name, and the resource will not start with that on the end.
+4. Put the folder in your server's `resources` folder. A `[dps]` folder keeps them together.
+5. Add `ensure` and the resource's name to your `server.cfg`, after the lines that start Qbox and ox.
+6. Restart the server and look at the console. Each resource prints a line when it is ready.
 
-4. Restart the server.
-5. Look at the server console. You should see this line:
+Start `dps_lib` first. Other DPS resources use it.
 
-   ```
-   [dps_lib] v0.1.0 ready, self-check 9/9
-   ```
-
-   If you see it, the pack is loaded.
-
-`ensure [dps]` starts every resource inside the `[dps]` folder. To leave one out, delete its folder.
+A one-paste install (a txAdmin recipe) is planned. It is not ready yet.
 
 ## Settings that matter on Enhanced
 
@@ -64,21 +59,23 @@ These cost us time, so we list them here.
   crash: `increase_pool_size "FragmentStore" 2000`
 - Models and textures made for the old FiveM must be converted with Cfx's
   [Alchemist](https://docs.fivem.net/docs/alchemist/) tool before Enhanced can use them.
+- Voice: Enhanced replaced Mumble. Add the line `voice_internal` to `server.cfg` before any voice
+  resource.
 
 ## Guides
 
-- [Add a script to the pack](docs/add-a-script.md)
+- [Add a script](docs/add-a-script.md)
 - [Change the look](docs/change-the-look.md)
 
 ## Contributing
 
-Pull requests are welcome. Read the
+Pull requests are welcome, on the repository of the resource you are changing. Read the
 [contributing guide](https://github.com/DPS-Enhanced/.github/blob/main/CONTRIBUTING.md) first.
 
 ## Thanks
 
-[Qbox](https://github.com/Qbox-project) for the framework,
-[Overextended](https://github.com/overextended) for ox_lib and oxmysql, and
+[Qbox](https://github.com/Qbox-project) for the framework and the resources ours are ported from,
+[Overextended](https://github.com/overextended) for the ox libraries, and
 [Cfx.re](https://cfx.re) for FiveM and Alchemist.
 
 ## Licence
