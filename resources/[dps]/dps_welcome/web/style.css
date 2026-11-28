@@ -1,0 +1,189 @@
+/* DPS look. These values are the defaults; app.js replaces them with the live theme from dps_lib,
+   so changing the theme there changes this screen too. */
+:root {
+    --dps-navy: #0e1a2b;
+    --dps-navy2: #152539;
+    --dps-navy3: #1b2e45;
+    --dps-line: #2b4057;
+    --dps-cream: #f2ead9;
+    --dps-dim: #a8b8c9;
+    --dps-accent: #ff7a45;
+    --dps-accent2: #ffb088;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    background: transparent;
+    color: var(--dps-cream);
+    font-family: 'Roboto Condensed', 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+    user-select: none;
+}
+
+[hidden] { display: none !important; }
+
+/* ---------- Welcome line for a new character ---------- */
+
+#welcome {
+    position: absolute;
+    left: 6vw;
+    bottom: 12vh;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
+    animation: rise 1.6s ease-out both;
+}
+
+.welcome-small {
+    font-size: 1.5vw;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dps-accent2);
+}
+
+#welcome h1 {
+    font-size: 5.4vw;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-left: 0.5vw solid var(--dps-accent);
+    padding-left: 1.2vw;
+    margin-top: 0.6vw;
+}
+
+.welcome-player {
+    margin-top: 1vw;
+    padding-left: 1.7vw;
+    font-size: 1.4vw;
+    color: var(--dps-dim);
+}
+
+/* ---------- Spawn picker ---------- */
+
+#picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 24vw;
+    min-width: 340px;
+    padding: 5vh 1.6vw 3vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(14, 26, 43, 0.96) 0%, rgba(14, 26, 43, 0.88) 70%, rgba(14, 26, 43, 0) 100%);
+    animation: slide 0.5s ease-out both;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 0.9vw;
+    padding-bottom: 2.2vh;
+    border-bottom: 1px solid var(--dps-line);
+}
+
+/* The DPS speed lines. */
+.lines { display: flex; flex-direction: column; gap: 5px; }
+.lines span { display: block; height: 4px; border-radius: 2px; background: var(--dps-accent); }
+.lines span:nth-child(1) { width: 34px; }
+.lines span:nth-child(2) { width: 24px; opacity: 0.75; }
+.lines span:nth-child(3) { width: 14px; opacity: 0.5; }
+
+.eyebrow {
+    font-size: 0.8vw;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dps-accent2);
+}
+
+h2 {
+    font-size: 1.5vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+#cards {
+    list-style: none;
+    flex: 1;
+    overflow-y: auto;
+    padding: 2vh 0.4vw 2vh 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9vh;
+    scrollbar-width: thin;
+    scrollbar-color: var(--dps-line) transparent;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    padding: 1.3vh 0.9vw;
+    background: var(--dps-navy2);
+    border: 1px solid var(--dps-line);
+    border-left: 4px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.card.selected {
+    background: var(--dps-navy3);
+    border-color: var(--dps-accent);
+    border-left-color: var(--dps-accent);
+    transform: translateX(6px);
+}
+
+.card .tag {
+    flex: none;
+    width: 4.6vw;
+    min-width: 62px;
+    text-align: center;
+    padding: 0.35vh 0;
+    border-radius: 3px;
+    font-size: 0.68vw;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dps-navy);
+    background: var(--dps-dim);
+}
+
+.card.kind-continue .tag { background: var(--dps-accent); }
+.card.kind-job .tag { background: var(--dps-accent2); }
+.card.kind-home .tag { background: var(--dps-cream); }
+
+.card .label { font-size: 1.05vw; font-weight: 700; }
+.card .detail { font-size: 0.8vw; color: var(--dps-dim); margin-top: 0.2vh; }
+
+/* The "continue" card is the default, so it is the biggest. */
+.card.kind-continue { padding: 2vh 0.9vw; }
+.card.kind-continue .label { font-size: 1.3vw; }
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.6vh;
+    border-top: 1px solid var(--dps-line);
+    font-size: 0.8vw;
+    color: var(--dps-dim);
+}
+
+kbd {
+    display: inline-block;
+    min-width: 1.6vw;
+    margin-right: 0.3vw;
+    padding: 0.2vh 0.4vw;
+    border: 1px solid var(--dps-line);
+    border-radius: 3px;
+    background: var(--dps-navy3);
+    color: var(--dps-cream);
+    font-family: inherit;
+    font-size: 0.75vw;
+    text-align: center;
+}
+
+@keyframes slide { from { transform: translateX(-30px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes rise { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }

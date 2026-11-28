@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>dps_welcome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Shown only to a brand new character, during the flight in. -->
+    <section id="welcome" hidden>
+        <p class="welcome-small">Welcome to</p>
+        <h1 id="welcome-name"></h1>
+        <p id="welcome-player" class="welcome-player"></p>
+    </section>
+
+    <!-- The spawn picker. -->
+    <main id="picker" hidden>
+        <header>
+            <div class="lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div>
+                <p class="eyebrow" id="server-name"></p>
+                <h2>Choose where to start</h2>
+            </div>
+        </header>
+
+        <ul id="cards"></ul>
+
+        <footer>
+            <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> look around</span>
+            <span><kbd>Enter</kbd> start here</span>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
